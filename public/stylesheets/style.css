@@ -1,8 +1,42 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
+
+:root {
+  --verde: rgb(153, 228, 42);
 }
 
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #404040;
+}
+
+h1,
+h2,
+h3,
 a {
-  color: #00B7FF;
+  font-family: "Dosis";
+}
+
+#nav {
+  padding-left: 30px;
+  padding-top: 5px;
+  height: 50px;
+}
+
+#nav li a {
+  font-size: 1.4em;
+  margin-left: 5px;
+  color: whitesmoke;
+}
+
+#nav a:hover,
+#nav a.active {
+  color: greenyellow;
+}
+
+#nav a.disabled {
+  color: gray;
+}
+
+#navbar-logo {
+  color: greenyellow;
 }

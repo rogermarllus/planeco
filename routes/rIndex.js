@@ -1,9 +1,11 @@
 var express = require("express");
 var router = express.Router();
+var cIndex = require("../controller/cIndex.js");
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
-});
+/* Rotas relacionadas à Página Principal, Sobre e Relatório Mensal */
+router.get("/", cIndex.home);
+router.post("/", cIndex.home);
+router.get("/sobre", cIndex.info);
+router.get("/relatorio", cIndex.report);
 
 module.exports = router;
