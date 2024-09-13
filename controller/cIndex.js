@@ -10,15 +10,51 @@ exports.home = async function (req, res) {
 
   var expenses = await mExpenses.getAllExpenses();
 
+  expenses.forEach((expense) => {
+    switch (expense.category) {
+      case "Alimentação":
+        expense.ctgFood = true;
+        break;
+      case "Assinatura":
+        expense.ctgSubscriptions = true;
+        break;
+      case "Estudos":
+        expense.ctgStudies = true;
+        break;
+      case "Lazer":
+        expense.ctgLeisure = true;
+        break;
+      case "Mercado":
+        expense.ctgMarket = true;
+        break;
+      case "Saúde":
+        expense.ctgHealth = true;
+        break;
+      case "Transporte":
+        expense.ctgTransport = true;
+        break;
+      case "Vestuário":
+        expense.ctgClothing = true;
+        break;
+      default:
+        expense.ctgOther = true;
+        break;
+    }
+  });
+
   dataContext = {
     user: user,
     expenses: expenses,
+    inIndex: true,
   };
   res.render("index", dataContext);
 };
 
 exports.info = async function (req, res) {
-  res.render("info");
+  dataContext = {
+    inInfo: true,
+  };
+  res.render("info", dataContext);
 };
 
 exports.errorId = async function (req, res) {

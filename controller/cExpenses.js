@@ -10,7 +10,7 @@ exports.create_post = async function (req, res) {
 };
 exports.read = async function (req, res) {
   try {
-    var id = req.params.id;
+    var id = req.params.id_expense;
     var expense = await mExpenses.read(id);
     var expDate = expense.date.toLocaleDateString("pt-BR");
     dataContext = {
@@ -24,7 +24,7 @@ exports.read = async function (req, res) {
 };
 exports.update_get = async function (req, res) {
   try {
-    var id = req.params.id;
+    var id = req.params.id_expense;
     var expense = await mExpenses.read(id);
     var ctgFood = false;
     var ctgSubscriptions = false;
@@ -84,29 +84,62 @@ exports.update_get = async function (req, res) {
 };
 exports.update_post = async function (req, res) {
   var expense = req.body;
-  var id = req.params.id;
+  var id = req.params.id_expense;
   await mExpenses.update(expense, id);
   res.redirect("/");
 };
 exports.delete = async function (req, res) {
-  var id = req.params.id;
+  var id = req.params.id_expense;
   await mExpenses.delete(id);
   res.redirect("/");
 };
 exports.archived = async function (req, res) {
   var archived = await mExpenses.getAllArchived();
+  archived.forEach((expense) => {
+    switch (expense.category) {
+      case "Alimentação":
+        expense.ctgFood = true;
+        break;
+      case "Assinatura":
+        expense.ctgSubscriptions = true;
+        break;
+      case "Estudos":
+        expense.ctgStudies = true;
+        break;
+      case "Lazer":
+        expense.ctgLeisure = true;
+        break;
+      case "Mercado":
+        expense.ctgMarket = true;
+        break;
+      case "Saúde":
+        expense.ctgHealth = true;
+        break;
+      case "Transporte":
+        expense.ctgTransport = true;
+        break;
+      case "Vestuário":
+        expense.ctgClothing = true;
+        break;
+      default:
+        expense.ctgOther = true;
+        break;
+    }
+  });
   dataContext = {
     expenses: archived,
+    inArchived: true,
   };
   res.render("archived", dataContext);
 };
 exports.archive = async function (req, res) {
-  var id = req.params.id;
+  var id = req.params.id_expense;
+  console.log(id);
   await mExpenses.archive(id);
   res.redirect("/");
 };
 exports.unarchive = async function (req, res) {
-  var id = req.params.id;
+  var id = req.params.id_expense;
   await mExpenses.unarchive(id);
-  res.redirect("/");
+  res.redirect("/despesas/arquivados");
 };

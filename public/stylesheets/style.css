@@ -6,6 +6,7 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: white;
   background-color: #404040;
 }
 
@@ -14,6 +15,14 @@ h2,
 h3,
 a {
   font-family: "Dosis";
+}
+
+p {
+  color: white;
+}
+
+nav {
+  margin-bottom: 70px;
 }
 
 #nav {
@@ -39,4 +48,185 @@ a {
 
 #navbar-logo {
   color: greenyellow;
+}
+
+#btnUpdateWallet {
+  width: 60px;
+  height: 60px;
+  margin-top: -10px;
+  margin-left: -20px;
+  background-color: #404040;
+  border: none;
+}
+
+#iconUpdateWallet {
+  font-size: 40px;
+  color: var(--verde);
+}
+#iconUpdateWallet:hover {
+  color: rgb(185, 230, 118);
+}
+#iconUpdateWallet:active {
+  color: white;
+}
+
+#aAddExpense {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5;
+  padding-bottom: 5;
+  background-color: #404040;
+  border: 3px solid var(--verde);
+  border-radius: 5px;
+  font-family: "Dosis";
+  text-decoration: none;
+  font-size: 1.5em;
+  color: var(--verde);
+}
+
+#aAddExpense:hover {
+  border: 3px solid rgb(185, 230, 118);
+  color: rgb(185, 230, 118);
+}
+
+#aAddExpense:active {
+  border: 3px solid white;
+  color: white;
+}
+
+#divAddExpense {
+  margin-top: 5px;
+}
+
+.btnIcon {
+  width: 30px;
+  height: 30px;
+  background-color: #404040;
+  border: none;
+}
+
+.btnIconOp {
+  width: 30px;
+  height: 30px;
+  background-color: #303030;
+  border: none;
+  text-decoration: none;
+}
+
+.btnIconOp,
+.btnIcon {
+  color: white;
+  font-size: 25px;
+}
+.btnIconOp:hover,
+.btnIcon:hover {
+  color: var(--verde);
+}
+
+.btnIconOp:active,
+.btnIcon:active {
+  color: rgb(185, 230, 118);
+}
+
+.list-group-item {
+  background-color: #303030;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p.expenseValueList {
+  font-family: "Dosis";
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: #ff3f3f;
+  font-size: 1.6em;
+}
+
+div.expensesValues {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -15px;
+}
+
+span.badge {
+  font-family: "Dosis";
+  font-size: 1.1em;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+span.food {
+  background-color: rgb(197, 134, 74);
+}
+
+span.subscriptions {
+  background-color: rgb(124, 36, 165);
+}
+
+span.studies {
+  background-color: rgb(73, 156, 62);
+}
+
+span.leisure {
+  background-color: rgb(192, 179, 64);
+}
+
+span.market {
+  background-color: rgb(189, 204, 103);
+}
+
+span.other {
+  background-color: rgb(59, 161, 153);
+}
+
+span.health {
+  background-color: rgb(201, 87, 87);
+}
+
+span.transport {
+  background-color: rgb(93, 85, 167);
+}
+
+span.clothing {
+  background-color: rgb(173, 68, 159);
+}
+
+.input-group-text {
+  border-color: #505050;
+  background-color: #303030;
+  color: white;
+  font-family: "Dosis";
+  font-size: 1.4em;
+  padding: none;
+}
+
+.form-control {
+  border-color: #505050;
+  background-color: #303030;
+  color: white;
+  font-family: "Dosis";
+  font-size: 1.4em;
+  padding: none;
+}
+.form-control:disabled {
+  border-color: #505050;
+  background-color: #303030;
+  color: white;
+  font-family: "Dosis";
+  font-size: 1.4em;
+  padding: none;
+}
+
+div.walletOp {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+div#walletRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
