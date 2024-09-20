@@ -1,158 +1,103 @@
-<div class="row">
-  <div class="col">
-    <h2>Saldo Atual:</h2>
-  </div>
-  <div class="col-6">
-    <div class="input-group mb-3">
-      <span class="input-group-text bg-secondary" id="inputWallet">R$</span>
-      <input
-        type="text"
-        class="form-control"
-        aria-label="wallet"
-        aria-describedby="inputWallet"
-        value="{{user.wallet}}"
-        disabled
-      />
-    </div>
-  </div>
-  <div class="col">
-    <button
-      type="button"
-      id="btnUpdateWallet"
-      data-bs-toggle="modal"
-      data-bs-target="#newValueModal"
-      disabled
-    >
-      <i class="bi bi-pencil-square" id="iconUpdateWallet"></i>
-    </button>
-  </div>
-  <div class="col">
-    <div id="divAddExpense">
-      <!-- /despesas/registrar -->
-      <a href="#" id="aAddExpense"><i
-          class="bi bi-plus-square"
-          id="iconAddExpense"
-        ></i>
-        Nova Despesa</a>
-    </div>
-  </div>
-</div>
-
-<div>
-  <ul class="list-group">
+{{#if expenses}}
+  <div class="divBtnRegistrar">
+    <h2>Histórico de Despesas:</h2>
+    <a href="/despesas/registrar">
+      <button class="btn btn-secondary">
+        <i class="bi bi-plus"></i>
+        Registrar
+      </button>
+    </a></div>
+  <div>
     {{#each expenses}}
-      <li class="list-group-item">
-        <div class="expensesValues">
-          <p class="expenseValueList">R$-{{this.value}}</p>
-          {{#if this.ctgFood}}
-            <span class="badge food">
-              <i class="bi bi-cup-straw"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgSubscriptions}}
-            <span class="badge subscriptions">
-              <i class="bi bi-display"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgStudies}}
-            <span class="badge studies">
-              <i class="bi bi-journal-bookmark"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgLeisure}}
-            <span class="badge leisure">
-              <i class="bi bi-dribbble"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgMarket}}
-            <span class="badge market">
-              <i class="bi bi-cart4"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgOther}}
-            <span class="badge other">
-              <i class="bi bi-boxes"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgHealth}}
-            <span class="badge health">
-              <i class="bi bi-capsule-pill"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgTransport}}
-            <span class="badge transport">
-              <i class="bi bi-bus-front"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
-          {{#if this.ctgClothing}}
-            <span class="badge clothing">
-              <i class="bi bi-bag"></i>
-              {{this.category}}
-            </span>
-          {{/if}}
+      <div class="container divExpenses">
+        <div class="row mb-3 expenseRow">
+          <div class="col-md-8">
+            <div class="expensesValues">
+              {{#if this.ctgFood}}
+                <span class="badge food">
+                  <i class="bi bi-cup-straw"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgSubscriptions}}
+                <span class="badge subscriptions">
+                  <i class="bi bi-display"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgStudies}}
+                <span class="badge studies">
+                  <i class="bi bi-journal-bookmark"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgLeisure}}
+                <span class="badge leisure">
+                  <i class="bi bi-dribbble"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgMarket}}
+                <span class="badge market">
+                  <i class="bi bi-cart4"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgOther}}
+                <span class="badge other">
+                  <i class="bi bi-boxes"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgHealth}}
+                <span class="badge health">
+                  <i class="bi bi-capsule-pill"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgTransport}}
+                <span class="badge transport">
+                  <i class="bi bi-bus-front"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              {{#if this.ctgClothing}}
+                <span class="badge clothing">
+                  <i class="bi bi-bag"></i>
+                  {{this.category}}
+                </span>
+              {{/if}}
+              <p class="expenseValueList">R$-{{this.value}}</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="expensesOperations">
+              <a class="btnIconOp" href="/despesas/consultar/{{this._id}}">
+                <i class="bi bi-arrow-up-right-square"></i>
+              </a>
+              <a class="btnIconOp" href="/despesas/alterar/{{this._id}}">
+                <i class="bi bi-pencil-square"></i>
+              </a>
+              <a class="btnIconOp" href="/despesas/arquivar/{{this._id}}">
+                <i class="bi bi-arrow-down-square"></i>
+              </a>
+              <a class="btnIconOp" href="/despesas/excluir/{{this._id}}">
+                <i class="bi bi-x-square"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="expensesOperations">
-          <a class="btnIconOp" href="/despesas/consultar/{{this._id}}">
-            <i class="bi bi-arrow-up-right-square"></i>
-          </a>
-          <a class="btnIconOp" href="/despesas/alterar/{{this._id}}">
-            <i class="bi bi-pencil-square"></i>
-          </a>
-          <a class="btnIconOp" href="/despesas/arquivar/{{this._id}}">
-            <i class="bi bi-arrow-down-square"></i>
-          </a>
-          <a class="btnIconOp" href="/despesas/excluir/{{this._id}}">
-            <i class="bi bi-x-square"></i>
-          </a>
-        </div>
-      </li>
+      </div>
     {{/each}}
-  </ul>
-</div>
-
-<!-- Modal para informar o novo saldo -->
-<div
-  class="modal fade"
-  id="newValueModal"
-  tabindex="-1"
-  aria-labelledby="modalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">Alteração de Saldo</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <input
-          type="text"
-          id="produtoValor"
-          class="form-control"
-          placeholder="Digite o novo valor do saldo"
-        />
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn"
-          data-bs-dismiss="modal"
-        >Cancelar</button>
-        <button type="button" class="btn" id="submitButton">Salvar</button>
-      </div>
-    </div>
   </div>
-</div>
+{{else}}
+  <div>
+    <h2>Ainda não há despesas registradas.</h2>
+    <a href="/despesas/registrar">
+      <button class="btn btn-secondary">
+        <i class="bi bi-plus"></i>
+        Registrar
+      </button>
+    </a>
+  </div>
+{{/if}}

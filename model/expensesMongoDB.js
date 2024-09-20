@@ -30,6 +30,7 @@ class Expense {
       { _id: new mongodb.ObjectId(id) },
       {
         $set: {
+          title: expense.title,
           value: expense.value,
           category: expense.category,
           description: expense.description,

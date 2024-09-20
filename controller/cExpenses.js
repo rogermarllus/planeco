@@ -12,10 +12,8 @@ exports.read = async function (req, res) {
   try {
     var id = req.params.id_expense;
     var expense = await mExpenses.read(id);
-    var expDate = expense.date.toLocaleDateString("pt-BR");
     dataContext = {
       expense: expense,
-      date: expDate,
     };
     res.render("expenseRead", dataContext);
   } catch (err) {
@@ -35,6 +33,10 @@ exports.update_get = async function (req, res) {
     var ctgHealth = false;
     var ctgTransport = false;
     var ctgClothing = false;
+    var paymentCredit = false;
+    var paymentDebit = false;
+    var paymentMoney = false;
+    var paymentPix = false;
 
     switch (expense.category) {
       case "Alimentação":
@@ -65,6 +67,20 @@ exports.update_get = async function (req, res) {
         ctgOther = true;
         break;
     }
+    switch (expense.paymentForm) {
+      case "Crédito":
+        paymentCredit = true;
+        break;
+      case "Débito":
+        paymentDebit = true;
+        break;
+      case "Dinheiro":
+        paymentMoney = true;
+        break;
+      default:
+        paymentPix = true;
+        break;
+    }
     dataContext = {
       expense: expense,
       ctgFood: ctgFood,
@@ -76,6 +92,10 @@ exports.update_get = async function (req, res) {
       ctgHealth: ctgHealth,
       ctgTransport: ctgTransport,
       ctgClothing: ctgClothing,
+      paymentCredit: paymentCredit,
+      paymentDebit: paymentDebit,
+      paymentMoney: paymentMoney,
+      paymentPix: paymentPix,
     };
     res.render("expenseUpdate", dataContext);
   } catch (err) {

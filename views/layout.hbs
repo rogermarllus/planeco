@@ -10,12 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm">
       <div class="container-fluid" id="nav">
         <a class="navbar-brand" href="/"><h2 id="navbar-logo">
-            <i class="bi bi-wallet2"></i>
+            <i class="bi bi-wallet-fill"></i>
             Planeco
-          </h2></a>
+          </h2>
+        </a>
         <button
           class="navbar-toggler d-lg-none"
           type="button"
@@ -30,23 +31,19 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav me-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a {{#if inIndex}}class="nav-link active"{{else}}class="nav-link"{{/if}} href="/"><i class="bi bi-house icon"></i>
+              <a {{#if inIndex}}class="nav-link active"{{else}}class="nav-link"{{/if}} href="/"><i class="bi bi-house-fill icon"></i>
                 Início</a>
             </li>
             <li class="nav-item">
-              <a {{#if inInfo}}class="nav-link active"{{else}}class="nav-link"{{/if}} href="/sobre"><i class="bi bi-info-circle icon"></i>
+              <a {{#if inInfo}}class="nav-link active"{{else}}class="nav-link"{{/if}} href="/sobre"><i class="bi bi-info-circle-fill icon"></i>
                 Sobre</a>
             </li>
             <li class="nav-item">
-              <a {{#if inArchived}}class="nav-link active"{{else}}class="nav-link"{{/if}} href="/despesas/arquivados"><i class="bi bi-archive icon"></i>
+              <a {{#if inArchived}}class="nav-link active"{{else}}class="nav-link"{{/if}} href="/despesas/arquivados"><i class="bi bi-archive-fill icon"></i>
                 Arquivados</a>
             </li>
             <li class="nav-item">
-              <a {{#if inSavings}}class="nav-link active disabled"{{else}}class="nav-link disabled"{{/if}} href="/poupanca/consulta/{{user._id}}"><i class="bi bi-piggy-bank icon"></i>
-                Poupança</a>
-            </li>
-            <li class="nav-item">
-              <a {{#if inReport}}class="nav-link active disabled"{{else}}class="nav-link disabled"{{/if}} href="/relatorio/{{user._id}}"><i class="bi bi-clipboard-data"></i>
+              <a {{#if inReport}}class="nav-link active disabled"{{else}}class="nav-link disabled"{{/if}} href="/relatorio/{{user._id}}"><i class="bi bi-clipboard-data-fill"></i>
                 Relatório Mensal</a>
             </li>
           </ul>

@@ -1,0 +1,126 @@
+<div class="container"></div>
+  <h1 class="mb-4">Alteração de Despesas</h1>
+  <form method="POST" action="/despesas/alterar/{{expense._id}}">
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título</label>
+      <input
+        type="text"
+        class="form-control"
+        id="titulo"
+        name="title"
+        value="{{expense.title}}"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="valor" class="form-label">Valor</label>
+      <input
+        type="number"
+        class="form-control"
+        id="valor"
+        name="value"
+        value="{{expense.value}}"
+        step="0.01"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descricao" class="form-label">Descrição</label>
+      <textarea
+        class="form-control"
+        id="descricao"
+        name="description"
+        rows="3"
+        placeholder="Descrição da despesa"
+      >{{expense.description}}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="data" class="form-label">Data</label>
+      <input type="date" class="form-control" id="data" name="date" value="{{expense.date}}" required />
+    </div>
+    <div class="mb-3">
+      <label for="categoria" class="form-label">Categoria</label>
+      <select class="form-select" id="categoria" name="category" required>
+        <option value="">Escolha uma categoria</option>
+        {{#if ctgFood}}
+          <option value="Alimentação" selected>Alimentação</option>
+        {{else}}
+          <option value="Alimentação">Alimentação</option>
+        {{/if}}
+        {{#if ctgSubscriptions}}
+        <option value="Assinaturas" selected>Assinaturas</option>
+        {{else}}
+        <option value="Assinaturas">Assinaturas</option>
+        {{/if}}
+        {{#if ctgStudies}}
+        <option value="Estudos" selected>Estudos</option>
+        {{else}}
+        <option value="Estudos">Estudos</option>
+        {{/if}}
+        {{#if ctgLeisure}}
+        <option value="Lazer" selected>Lazer</option>
+        {{else}}
+        <option value="Lazer">Lazer</option>
+        {{/if}}
+        {{#if ctgMarket}}
+        <option value="Mercado" selected>Mercado</option>
+        {{else}}
+        <option value="Mercado">Mercado</option>
+        {{/if}}
+        {{#if ctgOther}}
+        <option value="Outros" selected>Outros</option>
+        {{else}}
+        <option value="Outros">Outros</option>
+        {{/if}}
+        {{#if ctgHealth}}
+        <option value="Saúde" selected>Saúde</option>
+        {{else}}
+        <option value="Saúde">Saúde</option>
+        {{/if}}
+        {{#if ctgTransport}}
+        <option value="Transporte" selected>Transporte</option>
+        {{else}}
+        <option value="Transporte">Transporte</option>
+        {{/if}}
+        {{#if ctgClothing}}
+        <option value="Vestuário" selected>Vestuário</option>
+        {{else}}
+        <option value="Vestuário">Vestuário</option>
+        {{/if}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="formaPagamento" class="form-label">Forma de Pagamento</label>
+      <select
+        class="form-select"
+        id="formaPagamento"
+        name="paymentForm"
+        required
+      >
+        <option value="">Escolha a forma de pagamento</option>
+        {{#if paymentCredit}}
+        <option value="Crédito" selected>Crédito</option>
+        {{else}}
+        <option value="Crédito">Crédito</option>
+        {{/if}}
+        {{#if paymentDebit}}
+        <option value="Débito" selected>Débito</option>
+        {{else}}
+        <option value="Débito">Débito</option>
+        {{/if}}
+        {{#if paymentMoney}}
+        <option value="Dinheiro" selected>Dinheiro</option>
+        {{else}}
+        <option value="Dinheiro">Dinheiro</option>
+        {{/if}}
+        {{#if paymentPix}}
+        <option value="PIX" selected>PIX</option>
+        {{else}}
+        <option value="PIX">PIX</option>
+        {{/if}}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Alterar Despesa</button>
+    <button class="btn btn-secondary"><a href="/">Cancelar</a></button>
+  </form>
+</div>
