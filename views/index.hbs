@@ -1,12 +1,22 @@
 {{#if expenses}}
   <div class="divBtnRegistrar">
     <h2>Histórico de Despesas:</h2>
-    <a href="/despesas/registrar">
-      <button class="btn btn-secondary">
-        <i class="bi bi-plus"></i>
-        Registrar
-      </button>
-    </a></div>
+    <div>
+      <a
+        class="btn btn-secondary"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasExample"
+        role="button"
+        aria-controls="offcanvasExample"
+      >
+        <i class="bi bi-filter"></i>
+        Filtrar
+      </a>
+      <a href="/despesas/registrar" class="btn btn-secondary">
+        Nova Despesa
+      </a>
+    </div>
+  </div>
   <div>
     {{#each expenses}}
       <div class="container divExpenses">
@@ -73,16 +83,16 @@
           <div class="col-md-4">
             <div class="expensesOperations">
               <a class="btnIconOp" href="/despesas/consultar/{{this._id}}">
-                <i class="bi bi-arrow-up-right-square"></i>
+                <i class="bi bi-arrow-up-right-circle"></i>
               </a>
               <a class="btnIconOp" href="/despesas/alterar/{{this._id}}">
-                <i class="bi bi-pencil-square"></i>
+                <i class="bi bi-slash-circle"></i>
               </a>
               <a class="btnIconOp" href="/despesas/arquivar/{{this._id}}">
-                <i class="bi bi-arrow-down-square"></i>
+                <i class="bi bi-arrow-down-circle"></i>
               </a>
               <a class="btnIconOp" href="/despesas/excluir/{{this._id}}">
-                <i class="bi bi-x-square"></i>
+                <i class="bi bi-x-circle"></i>
               </a>
             </div>
           </div>
@@ -95,9 +105,87 @@
     <h2>Ainda não há despesas registradas.</h2>
     <a href="/despesas/registrar">
       <button class="btn btn-secondary">
-        <i class="bi bi-plus"></i>
-        Registrar
+        Nova Despesa
       </button>
     </a>
   </div>
 {{/if}}
+
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title" id="offcanvasExampleLabel">Filtrar por</h2>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <form action="/" method="POST">
+      <div>
+        <label for="filtroCategoria" class="form-label">Categoria:</label>
+      </div>
+      <div>
+        <select name="categoryFilter" class="form-select" id="filtroCategoria">
+          <option value="Todas" selected>Todas</option>
+          <option value="Alimentação">Alimentação</option>
+          <option value="Assinaturas">Assinaturas</option>
+          <option value="Estudos">Estudos</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Mercado">Mercado</option>
+          <option value="Outros">Outros</option>
+          <option value="Saúde">Saúde</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Vestuário">Vestuário</option>
+        </select>
+      </div>
+      <div>
+        <label for="filtroFormaPagamento" class="form-label">Forma de Pagamento:
+        </label>
+      </div>
+      <div>
+        <select
+          class="form-select"
+          id="filtroFormaPagamento"
+          name="paymentFormFilter"
+        >
+          <option value="Todas" selected>Todas</option>
+          <option value="Crédito">Crédito</option>
+          <option value="Débito">Débito</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="PIX">PIX</option>
+        </select>
+      </div>
+      <div>
+        <label for="filtroMes" class="form-label">Mês:
+        </label>
+      </div>
+      <div>
+        <select class="form-select" id="filtroMes" name="monthFilter">
+          <option value="Todos" selected>Todos</option>
+          <option value="01">Janeiro</option>
+          <option value="02">Fevereiro</option>
+          <option value="03">Março</option>
+          <option value="04">Abril</option>
+          <option value="05">Maio</option>
+          <option value="06">Junho</option>
+          <option value="07">Julho</option>
+          <option value="08">Agosto</option>
+          <option value="09">Setembro</option>
+          <option value="10">Outubro</option>
+          <option value="11">Novembro</option>
+          <option value="12">Dezembro</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-secondary">Aplicar</button>
+      </div>
+    </form>
+  </div>
+</div>

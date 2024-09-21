@@ -90,16 +90,51 @@ class Expense {
       await collectionExpenses.insertOne(expense);
     }
   }
+  async getAllExpensesFilter(filterCategory, filterPaymentForm, filterMonth) {
+    await connection_bd();
+    const collection = bd().collection("expenses");
+    let pipeline = [];
+
+    if (filterCategory !== "Todas") {
+      pipeline.push({ $match: { category: filterCategory } });
+    }
+
+    if (filterPaymentForm !== "Todas") {
+      pipeline.push({ $match: { paymentForm: filterPaymentForm } });
+    }
+
+    if (filterMonth !== "Todos") {
+      const year = new Date().getFullYear();
+      const startDate = new Date(`${year}-${filterMonth}-01T00:00:00Z`);
+      const endDate = new Date(
+        `${year}-${(parseInt(filterMonth) + 1)
+          .toString()
+          .padStart(2, "0")}-01T00:00:00Z`
+      );
+      pipeline.push({
+        $match: {
+          date: { $gte: startDate, $lt: endDate },
+        },
+      });
+    }
+
+    pipeline.push({
+      $sort: { date: -1 },
+    });
+
+    var expenses = await collection.aggregate(pipeline).toArray();
+    return expenses;
+  }
   async getAllExpenses() {
     await connection_bd();
     const collection = bd().collection("expenses");
-    var expenses = await collection.find({}).toArray();
+    var expenses = await collection.find({}).sort({ date: -1 }).toArray();
     return expenses;
   }
   async getAllArchived() {
     await connection_bd();
     const collection = bd().collection("archived");
-    var archived = await collection.find({}).toArray();
+    var archived = await collection.find({}).sort({ date: -1 }).toArray();
     return archived;
   }
   async qtdExpenses() {

@@ -1,73 +1,110 @@
 <div class="container">
-  <h1 class="mb-4">Cadastro de Despesas</h1>
-  <form method="POST" action="/despesas/registrar">
-    <div class="mb-3">
-      <label for="titulo" class="form-label">Título</label>
-      <input
-        type="text"
-        class="form-control"
-        id="titulo"
-        name="title"
-        placeholder="Título da despesa"
-        required
-      />
+  <form action="/despesas/registrar" method="POST">
+    <div class="row">
+      <div class="col">
+        <h1 class="mb-4">Registrar Despesa</h1>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="valor" class="form-label">Valor</label>
-      <input
-        type="number"
-        class="form-control"
-        id="valor"
-        name="value"
-        placeholder="Valor da despesa"
-        step="0.01"
-        required
-      />
+    <div class="row">
+      <div class="col">
+        <label for="titulo" class="form-label">Título</label>
+      </div>
+      <div class="col">
+        <label for="valor" class="form-label">Valor</label>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="descricao" class="form-label">Descrição</label>
-      <textarea
-        class="form-control"
-        id="descricao"
-        name="description"
-        rows="3"
-        placeholder="Descrição da despesa"
-      ></textarea>
+    <div class="row">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          id="titulo"
+          name="title"
+          placeholder="Título da despesa"
+          required
+        /></div>
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          id="valor"
+          name="value"
+          placeholder="Valor da despesa"
+          step="0.01"
+          required
+        /></div>
     </div>
-    <div class="mb-3">
-      <label for="data" class="form-label">Data</label>
-      <input type="date" class="form-control" id="data" name="date" required />
+    <div class="row">
+      <div class="col">
+        <label for="descricao" class="form-label">Descrição</label>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="categoria" class="form-label">Categoria</label>
-      <select class="form-select" id="categoria" name="category" required>
-        <option value="">Escolha uma categoria</option>
-        <option value="Alimentação">Alimentação</option>
-        <option value="Assinaturas">Assinaturas</option>
-        <option value="Estudos">Estudos</option>
-        <option value="Lazer">Lazer</option>
-        <option value="Mercado">Mercado</option>
-        <option value="Outros">Outros</option>
-        <option value="Saúde">Saúde</option>
-        <option value="Transporte">Transporte</option>
-        <option value="Vestuário">Vestuário</option>
-      </select>
+    <div class="row">
+      <div class="col">
+        <textarea
+          class="form-control"
+          id="descricao"
+          name="description"
+          rows="3"
+          placeholder="Descrição da despesa"
+        ></textarea>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="formaPagamento" class="form-label">Forma de Pagamento</label>
-      <select
-        class="form-select"
-        id="formaPagamento"
-        name="paymentForm"
-        required
-      >
-        <option value="">Escolha a forma de pagamento</option>
-        <option value="Crédito">Crédito</option>
-        <option value="Débito">Débito</option>
-        <option value="Dinheiro">Dinheiro</option>
-        <option value="PIX">PIX</option>
-      </select>
+    <div class="row">
+      <div class="col">
+        <label for="data" class="form-label">Data</label>
+      </div>
+      <div class="col">
+        <label for="categoria" class="form-label">Categoria</label>
+      </div>
+      <div class="col">
+        <label for="formaPagamento" class="form-label">Forma de Pagamento</label>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Cadastrar Despesa</button>
+    <div class="row">
+      <div class="col">
+        <input
+          type="date"
+          class="form-control"
+          id="data"
+          name="date"
+          required
+        />
+      </div>
+      <div class="col">
+        <select class="form-select" id="categoria" name="category" required>
+          <option value="">Escolha uma</option>
+          <option value="Alimentação">Alimentação</option>
+          <option value="Assinaturas">Assinaturas</option>
+          <option value="Estudos">Estudos</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Mercado">Mercado</option>
+          <option value="Outros">Outros</option>
+          <option value="Saúde">Saúde</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Vestuário">Vestuário</option>
+        </select>
+      </div>
+      <div class="col">
+        <select
+          class="form-select"
+          id="formaPagamento"
+          name="paymentForm"
+          required
+        >
+          <option value="">Escolha uma</option>
+          <option value="Crédito">Crédito</option>
+          <option value="Débito">Débito</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="PIX">PIX</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-secondary">Registrar</button>
+        <a href="/" class="btn btn-outline-secondary">Cancelar</a>
+      </div>
+    </div>
   </form>
 </div>

@@ -1,22 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Consulta à Despesa</h1>
+      <h1 class="expenseTitleRead">{{expense.title}} | R$-{{expense.value}}</h1>
+    </div>
+  </div>
+  <div class="infoRead">
+    <div class="row">
+      <div class="col"><p><b>Categoria: </b>{{expense.category}}</p></div>
+    </div>
+    <div class="row">
+      <div class="col"><p><b>Data:
+          </b>{{realDate}}</p></div>
+    </div>
+    <div class="row">
+      <div class="col"><p><b>Forma de Pagamento:
+          </b>{{expense.paymentForm}}</p></div>
+    </div>
+    <div class="row">
+      <div class="col"><p><b>Descrição: </b></p><p
+        >{{expense.description}}</p></div>
     </div>
   </div>
   <div class="row">
-    <div class="col-10"><p>{{expense.title}}</p></div>
-    <div class="col-2"><p>{{expense.category}}</p></div>
-  </div>
-  <div class="row">
-    <div class="col-4"><p>{{expense.date}}</p></div>
-    <div class="col-4"><p>R$-{{expense.value}}</p></div>
-    <div class="col-4"><p>{{expense.paymentForm}}</p></div>
-  </div>
-  <div class="row">
-    <div class="col"><p>{{expense.description}}</p></div>
-  </div>
-  <div class="row">
-    <div class="col"><button><a href="/">Voltar</a></button></div>
+    <div class="col">
+      <a href="/" class="btn btn-outline-secondary">
+        Voltar
+      </a>
+    </div>
   </div>
 </div>

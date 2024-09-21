@@ -5,6 +5,8 @@ exports.create_get = async function (req, res) {
 };
 exports.create_post = async function (req, res) {
   var expense = req.body;
+  var realDate = new Date(expense.date + "T00:00:00");
+  expense.realDate = realDate;
   await mExpenses.create(expense);
   res.redirect("/");
 };
@@ -14,6 +16,7 @@ exports.read = async function (req, res) {
     var expense = await mExpenses.read(id);
     dataContext = {
       expense: expense,
+      realDate: expense.realDate.toLocaleDateString("pt-BR"),
     };
     res.render("expenseRead", dataContext);
   } catch (err) {

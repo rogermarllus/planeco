@@ -68,7 +68,7 @@
           <div class="col-md-4">
             <div class="expensesOperations">
               <a class="btnIconOp" href="/despesas/desarquivar/{{this._id}}">
-                <i class="bi bi-arrow-up-square"></i>
+                <i class="bi bi-arrow-up-circle"></i>
               </a>
             </div>
           </div>
@@ -79,9 +79,10 @@
 {{else}}
   <div>
     <h2>Não há despesas arquivadas.</h2>
-    <a href="/"><button class="btn btn-secondary"><i
-          class="bi bi-arrow-left"
-        ></i>
-        Voltar</button></a>
+    <a href="/">
+      <button class="btn btn-outline-secondary">
+        Voltar
+      </button>
+    </a>
   </div>
 {{/if}}

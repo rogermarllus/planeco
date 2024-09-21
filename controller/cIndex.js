@@ -8,6 +8,20 @@ exports.home = async function (req, res) {
   }
   var user = await mUsers.loginHasVisitor();
 
+  /*
+  var filterCategory = req.body.filtroCategoria;
+  var filterPaymentForm = req.body.paymentFormFilter;
+  var filterMonth = req.body.monthFilter;
+  console.log(filterCategory);
+  console.log(filterPaymentForm);
+  console.log(filterMonth);
+
+  var expenses = await mExpenses.getAllExpensesFilter(
+    filterCategory,
+    filterPaymentForm,
+    filterMonth
+  );
+  */
   var expenses = await mExpenses.getAllExpenses();
 
   expenses.forEach((expense) => {
@@ -64,4 +78,12 @@ exports.errorId = async function (req, res) {
     id: id,
   };
   res.render("errorId", dataContext);
+};
+
+exports.report = async function (req, res) {
+  dataContext = {
+    title: "Relatório",
+    inReport: true,
+  };
+  res.render("report", dataContext);
 };
