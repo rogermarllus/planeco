@@ -1,3 +1,4 @@
+const mUsers = require("../model/usersMongoDB.js");
 const mExpenses = require("../model/expensesMongoDB.js");
 
 exports.create_get = async function (req, res) {
@@ -14,6 +15,7 @@ exports.read = async function (req, res) {
   try {
     var id = req.params.id_expense;
     var expense = await mExpenses.read(id);
+    expense.value = parseFloat(expense.value).toFixed(2);
     dataContext = {
       expense: expense,
       realDate: expense.realDate.toLocaleDateString("pt-BR"),
@@ -119,6 +121,7 @@ exports.delete = async function (req, res) {
 exports.archived = async function (req, res) {
   var archived = await mExpenses.getAllArchived();
   archived.forEach((expense) => {
+    expense.value = parseFloat(expense.value).toFixed(2);
     switch (expense.category) {
       case "Alimentação":
         expense.ctgFood = true;
@@ -165,4 +168,62 @@ exports.unarchive = async function (req, res) {
   var id = req.params.id_expense;
   await mExpenses.unarchive(id);
   res.redirect("/despesas/arquivados");
+};
+
+exports.home = async function (req, res) {
+  var hasVisitorUser = await mUsers.hasVisitor();
+  if (!hasVisitorUser) {
+    await mUsers.createVisitor();
+  }
+  var user = await mUsers.loginHasVisitor();
+
+  var filterCategory = req.body.categoryFilter;
+  var filterPaymentForm = req.body.paymentFormFilter;
+  console.log(filterCategory);
+  console.log(filterPaymentForm);
+
+  var expenses = await mExpenses.getAllExpensesFilter(
+    filterCategory,
+    filterPaymentForm
+  );
+
+  expenses.forEach((expense) => {
+    expense.value = parseFloat(expense.value).toFixed(2);
+    switch (expense.category) {
+      case "Alimentação":
+        expense.ctgFood = true;
+        break;
+      case "Assinaturas":
+        expense.ctgSubscriptions = true;
+        break;
+      case "Estudos":
+        expense.ctgStudies = true;
+        break;
+      case "Lazer":
+        expense.ctgLeisure = true;
+        break;
+      case "Mercado":
+        expense.ctgMarket = true;
+        break;
+      case "Saúde":
+        expense.ctgHealth = true;
+        break;
+      case "Transporte":
+        expense.ctgTransport = true;
+        break;
+      case "Vestuário":
+        expense.ctgClothing = true;
+        break;
+      default:
+        expense.ctgOther = true;
+        break;
+    }
+  });
+
+  dataContext = {
+    user: user,
+    expenses: expenses,
+    inIndex: true,
+  };
+  res.render("index", dataContext);
 };

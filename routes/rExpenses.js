@@ -8,6 +8,7 @@ router.get("/consultar/:id_expense", cExpenses.read);
 router.get("/alterar/:id_expense", cExpenses.update_get);
 router.post("/alterar/:id_expense", cExpenses.update_post);
 router.get("/excluir/:id_expense", cExpenses.delete);
+router.post("/filtrar", cExpenses.home);
 
 /* Rotas Relacionadas às Despesas Arquivadas */
 router.get("/arquivados", cExpenses.archived);

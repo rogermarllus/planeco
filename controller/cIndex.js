@@ -8,23 +8,10 @@ exports.home = async function (req, res) {
   }
   var user = await mUsers.loginHasVisitor();
 
-  /*
-  var filterCategory = req.body.filtroCategoria;
-  var filterPaymentForm = req.body.paymentFormFilter;
-  var filterMonth = req.body.monthFilter;
-  console.log(filterCategory);
-  console.log(filterPaymentForm);
-  console.log(filterMonth);
-
-  var expenses = await mExpenses.getAllExpensesFilter(
-    filterCategory,
-    filterPaymentForm,
-    filterMonth
-  );
-  */
   var expenses = await mExpenses.getAllExpenses();
 
   expenses.forEach((expense) => {
+    expense.value = parseFloat(expense.value).toFixed(2);
     switch (expense.category) {
       case "Alimentação":
         expense.ctgFood = true;

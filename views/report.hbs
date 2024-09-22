@@ -114,3 +114,30 @@
     </tbody>
   </table>
 </div>
+<div
+  aria-live="polite"
+  aria-atomic="true"
+  class="bg-body-secondary position-relative bd-example-toasts rounded-3"
+>
+  <div
+    class="toast-container position-fixed bottom-0 end-0 p-3"
+    id="toastPlacement"
+    style="z-index: 11"
+  >
+    <div class="toast">
+      <div class="toast-header">
+        <strong class="me-auto"><i class="bi bi-wallet-fill"></i>
+          Planeco</strong>
+        <small>Agora</small>
+      </div>
+      <div class="toast-body">
+        <p>Olá Visitante! Este é o seu relatório mensal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () { var toastEl =
+  document.querySelector('.toast'); var toast = new bootstrap.Toast(toastEl);
+  toast.show(); });
+</script>

@@ -90,7 +90,7 @@ class Expense {
       await collectionExpenses.insertOne(expense);
     }
   }
-  async getAllExpensesFilter(filterCategory, filterPaymentForm, filterMonth) {
+  async getAllExpensesFilter(filterCategory, filterPaymentForm) {
     await connection_bd();
     const collection = bd().collection("expenses");
     let pipeline = [];
@@ -101,21 +101,6 @@ class Expense {
 
     if (filterPaymentForm !== "Todas") {
       pipeline.push({ $match: { paymentForm: filterPaymentForm } });
-    }
-
-    if (filterMonth !== "Todos") {
-      const year = new Date().getFullYear();
-      const startDate = new Date(`${year}-${filterMonth}-01T00:00:00Z`);
-      const endDate = new Date(
-        `${year}-${(parseInt(filterMonth) + 1)
-          .toString()
-          .padStart(2, "0")}-01T00:00:00Z`
-      );
-      pipeline.push({
-        $match: {
-          date: { $gte: startDate, $lt: endDate },
-        },
-      });
     }
 
     pipeline.push({
@@ -179,7 +164,7 @@ class Expense {
 
     const totalValueMonth =
       totalValueMonthResult.length > 0
-        ? totalValueMonthResult[0].totalValue
+        ? totalValueMonthResult[0].totalValue.toFixed(2)
         : 0;
 
     // Pipeline para encontrar a forma de pagamento mais recorrente no mês atual
@@ -279,7 +264,7 @@ class Expense {
     ) {
       const result = categoryAggregationResult[i];
       this[categoryVariables[i].ctg] = result._id;
-      this[categoryVariables[i].ctgSum] = result.totalValue;
+      this[categoryVariables[i].ctgSum] = result.totalValue.toFixed(2);
     }
 
     // Preenche o restante das variáveis não utilizadas com valores padrão

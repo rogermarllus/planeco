@@ -27,7 +27,7 @@ p {
 
 nav {
   margin-bottom: 50px;
-  background-color: rgb(210, 255, 143);
+  background-color: var(--verde_secundario);
 }
 
 #nav {
@@ -45,10 +45,7 @@ nav {
   font-weight: bold;
 }
 
-#nav li a:hover {
-  color: black;
-}
-
+#nav li a:hover,
 a.nav-link:hover,
 #nav a.active {
   color: black;
@@ -64,37 +61,34 @@ a.nav-link:hover,
   color: var(--cinza_primario);
   font-weight: bold;
 }
+
 #navbar-logo:hover {
   color: black;
 }
 
-.btnIcon {
+.btnIcon,
+.btnIconOp {
   width: 30px;
   height: 30px;
   background-color: whitesmoke;
   border: none;
+  color: darkgray;
+  font-size: 25px;
 }
 
 .btnIconOp {
   width: 35px;
   height: 35px;
   background-color: rgba(255, 255, 255, 0);
-  border: none;
-  text-decoration: none;
   margin-right: 15px;
+  text-decoration: none;
 }
 
-.btnIconOp,
-.btnIcon {
-  color: darkgray;
-  font-size: 25px;
-}
 .btnIconOp:hover,
 .btnIcon:hover {
   color: black;
   transform: scale(1.05);
   transition: 0.5s;
-  margin-top: 0px;
 }
 
 .btnIconOp:active,
@@ -270,7 +264,7 @@ label {
 }
 
 h1.expenseTitleRead {
-  color: rgb(243, 95, 95);
+  color: gray;
 }
 
 div.infoRead {
@@ -290,7 +284,7 @@ div#tableReport {
   margin-bottom: 50px;
   margin-top: 5px;
   border-radius: 5px;
-  border: 1px, solid, darkgrey;
+  border: 1px solid darkgrey;
 }
 
 table.table {
