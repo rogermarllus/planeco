@@ -1,1 +1,116 @@
-<h1>{{title}}</h1>
+<div class="row">
+  <div class="col"><h1>{{title}}</h1></div>
+</div>
+<div class="row">
+  <div class="col"><h3><b>Mês: {{report.month}}, {{report.year}}</b></h3></div>
+</div>
+<div class="row">
+  <div class="col"><label class="form-label" for="valorTotalGasto">Valor Total
+      Gasto:</label></div>
+  <div class="col"><label class="form-label" for="formaPagamentoMaisUsada">Forma
+      de Pagamento Mais Usada:</label></div>
+  <div class="col"><label
+      class="form-label"
+      for="categoriaMaisRecorrente"
+    >Categoria Mais Recorrente:</label></div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="bi bi-cash"></i></span>
+      <input
+        type="text"
+        class="form-control"
+        value="{{report.totalValueMonth}}"
+        disabled
+      />
+    </div>
+  </div>
+  <div class="col">
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi bi-credit-card"></i>
+      </span>
+      <input
+        type="text"
+        class="form-control"
+        value="{{report.mostPaymentForm}}"
+        disabled
+      />
+    </div>
+  </div>
+  <div class="col">
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi bi-bookmark"></i>
+      </span>
+      <input
+        type="text"
+        class="form-control"
+        value="{{report.mostCategory}}"
+        disabled
+      />
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col"><h4>Somatória de Gastos por Categoria:</h4></div>
+</div>
+<div id="tableReport">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Posição</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Valor Gasto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1º</th>
+        <td>{{report.ctg1}}</td>
+        <td>R$ {{report.ctgSum1}}</td>
+      </tr>
+      <tr>
+        <th scope="row">2º</th>
+        <td>{{report.ctg2}}</td>
+        <td>R$ {{report.ctgSum2}}</td>
+      </tr>
+      <tr>
+        <th scope="row">3º</th>
+        <td>{{report.ctg3}}</td>
+        <td>R$ {{report.ctgSum3}}</td>
+      </tr>
+      <tr>
+        <th scope="row">4º</th>
+        <td>{{report.ctg4}}</td>
+        <td>R$ {{report.ctgSum4}}</td>
+      </tr>
+      <tr>
+        <th scope="row">5º</th>
+        <td>{{report.ctg5}}</td>
+        <td>R$ {{report.ctgSum5}}</td>
+      </tr>
+      <tr>
+        <th scope="row">6º</th>
+        <td>{{report.ctg6}}</td>
+        <td>R$ {{report.ctgSum6}}</td>
+      </tr>
+      <tr>
+        <th scope="row">7º</th>
+        <td>{{report.ctg7}}</td>
+        <td>R$ {{report.ctgSum7}}</td>
+      </tr>
+      <tr>
+        <th scope="row">8º</th>
+        <td>{{report.ctg8}}</td>
+        <td>R$ {{report.ctgSum8}}</td>
+      </tr>
+      <tr>
+        <th scope="row">9º</th>
+        <td>{{report.ctg9}}</td>
+        <td>R$ {{report.ctgSum9}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

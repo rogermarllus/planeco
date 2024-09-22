@@ -29,7 +29,7 @@ exports.home = async function (req, res) {
       case "Alimentação":
         expense.ctgFood = true;
         break;
-      case "Assinatura":
+      case "Assinaturas":
         expense.ctgSubscriptions = true;
         break;
       case "Estudos":
@@ -81,9 +81,11 @@ exports.errorId = async function (req, res) {
 };
 
 exports.report = async function (req, res) {
+  report = await mExpenses.getReport();
   dataContext = {
     title: "Relatório",
     inReport: true,
+    report: report,
   };
   res.render("report", dataContext);
 };

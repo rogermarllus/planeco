@@ -15,6 +15,7 @@ body {
 h1,
 h2,
 h3,
+h4,
 a {
   font-family: "Dosis";
   color: var(--cinza_primario);
@@ -276,4 +277,23 @@ div.infoRead {
   border-radius: 5px;
   border: 3px solid rgb(121, 121, 121);
   padding: 10px;
+}
+
+h4 {
+  margin-top: 10px;
+}
+
+div#tableReport {
+  font-family: "Dosis";
+  font-size: 1.3em;
+  padding-bottom: 0px;
+  margin-bottom: 50px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px, solid, darkgrey;
+}
+
+table.table {
+  margin-bottom: 0px;
+  text-align: center;
 }
